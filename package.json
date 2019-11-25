@@ -1,0 +1,25 @@
+{
+  "name": "chgk-poster-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ph1l74/chgk-poster-generator.git"
+  },
+  "keywords": [
+    "chgk",
+    "poster",
+    "image",
+    "js"
+  ],
+  "author": "ph1l74",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ph1l74/chgk-poster-generator/issues"
+  },
+  "homepage": "https://github.com/ph1l74/chgk-poster-generator#readme"
+}
