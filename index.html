@@ -9,10 +9,13 @@
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js"></script>
+
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -37,9 +40,10 @@
                         <h4 class="uk-text-center">Высота афиши:</h4>
                         <div class="uk-form-controls">
                             <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                <label><input class="uk-radio" type="radio" name="radio"> 450px</label>
-                                <label><input class="uk-radio" type="radio" name="radio"> 500px</label>
-                                <label><input class="uk-radio" type="radio" name="radio"> 600px</label>
+                                <label><input class="uk-radio" type="radio" name="sizeselector" value=450 checked>
+                                    450px</label>
+                                <label><input class="uk-radio" type="radio" name="sizeselector" value=500> 500px</label>
+                                <label><input class="uk-radio" type="radio" name="sizeselector" value=600> 600px</label>
                             </div>
                         </div>
                     </div>
@@ -59,8 +63,10 @@
                         <h4 class="uk-text-center uk-margin-small">Изображение подложки:</h4>
                         <div class="uk-form-controls">
                             <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                <label><input class="uk-radio" type="radio" name="radio"> Градиент</label>
-                                <label><input class="uk-radio" type="radio" name="radio"> Изображение </label>
+                                <label><input class="uk-radio" type="radio" name="covermode" value="gradient">
+                                    Градиент</label>
+                                <label><input class="uk-radio" type="radio" name="covermode" value="image" checked>
+                                    Изображение </label>
                             </div>
                         </div>
                         <div id="gradientOptions">
@@ -74,7 +80,7 @@
                             </div>
                             <button class="uk-button uk-button-default uk-margin-top uk-width-1-1">Случайный</button>
                         </div>
-                        <div id="fileOptions" class="uk-margin-top" uk-grid>
+                        <div id="uploadOptions" class="uk-margin-top" uk-grid>
                             <div uk-form-custom class="uk-width-1-1">
                                 <input id="fileUploader" type="file">
                                 <button class="uk-button uk-button-default uk-width-1-1" type="button"
@@ -85,7 +91,10 @@
                     </div>
                 </div>
             </div>
-            <script src="script.js"></script>
+        </div>
+        <script>
+            init();
+        </script>
 </body>
 
 </html>

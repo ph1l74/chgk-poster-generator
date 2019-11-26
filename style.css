@@ -1,5 +1,11 @@
 .cpg-image-container {
+    transition: all 0.5s ease-out;
     width: 800px;
-    height: 400px;
+    height: 450px;
     border: 1px solid lightgrey;
+}
+
+.cpg-hidden {
+    visibility: hidden;
+    opacity: 0;
 }
