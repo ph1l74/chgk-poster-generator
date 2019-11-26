@@ -27,7 +27,9 @@
     <div class="uk-section cpg-image uk-margin-small">
         <div uk-grid class="uk-container uk-margin-auto">
             <div class="uk-width-3-4 uk-margin-auto ">
-                <div id="imageContainer" class="cpg-image-container"></div>
+                <div id="imageContainer"
+                    class="cpg-image-container uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light"
+                    data-src="" uk-img></div>
             </div>
             <div class="uk-width-1-4 uk-margin-auto ">
                 <div class="cpg-controlls uk-margin-small uk-margin-auto uk-align-center">
@@ -74,7 +76,7 @@
                         </div>
                         <div id="fileOptions" class="uk-margin-top" uk-grid>
                             <div uk-form-custom class="uk-width-1-1">
-                                <input type="file">
+                                <input id="fileUploader" type="file">
                                 <button class="uk-button uk-button-default uk-width-1-1" type="button"
                                     tabindex="-1">Выберите файл</button>
                             </div>
@@ -83,7 +85,7 @@
                     </div>
                 </div>
             </div>
-
+            <script src="script.js"></script>
 </body>
 
 </html>
