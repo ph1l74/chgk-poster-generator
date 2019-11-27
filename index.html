@@ -37,10 +37,10 @@
                 <div id="imageContainer"
                     class="cpg-image-container uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-margin-medium-top"
                     data-src="" uk-img>
-                    <div id="imageDate" class="cpg-image-text"></div>
-                    <div id="imageTime" class="cpg-image-text"></div>
+                    <div id="imageDate" class="cpg-image-text cpg-image-text-with-bg"></div>
+                    <div id="imageTime" class="cpg-image-text cpg-image-text-with-bg"></div>
                     <div id="imageTitle" class="cpg-image-text"></div>
-                    <div id="imageLoc" class="cpg-image-text"></div>
+                    <div id="imageLoc" class="cpg-image-text cpg-image-text-with-bg"></div>
                 </div>
             </div>
             <div class="uk-width-1-4 uk-margin-auto">
@@ -83,15 +83,15 @@
                             </div>
                         </div>
                         <div id="gradientOptions">
-                            <div uk-grid>
+                            <!-- <div uk-grid class="uk-margin-bottom">
                                 <div class="uk-width-1-2@s uk-margin-remove">
                                     <input class="uk-input" type="text" placeholder="50" maxlength="число">
                                 </div>
                                 <div class="uk-width-1-2@s uk-margin-remove">
                                     <input class="uk-input" type="text" placeholder="50" maxlength="число">
                                 </div>
-                            </div>
-                            <button class="uk-button uk-button-default uk-margin-top uk-width-1-1">Случайный</button>
+                            </div> -->
+                            <button id="generateGradient" class="uk-button uk-button-default uk-width-1-1">Случайный</button>
                         </div>
                         <div id="uploadOptions" class="uk-margin-top" uk-grid>
                             <div uk-form-custom class="uk-width-1-1">
@@ -101,17 +101,9 @@
                             </div>
                         </div>
 
-                        <div id="modal-container" class="uk-modal-container" uk-modal>
-                            <div class="uk-modal-dialog uk-modal-body">
-                                <button class="uk-modal-close-default" type="button" uk-close></button>
-                                <div id="imageDownloaderImg"></div>
-                            </div>
-                        </div>
-
-                        <div id="uploadOptions" class="uk-margin-top">
-                            <a id="downloadModal" class="uk-button uk-button-primary uk-width-1-1"
-                                href="#modal-container" uk-toggle><i class="fas fa-cloud-download-alt"></i>
-                                Скачать</a></a>
+                        <div id="downloadOptions" class="uk-margin-top">
+                            <a id="downloadImage" class="uk-button uk-button-primary uk-width-1-1"><i
+                                    class="fas fa-cloud-download-alt"></i> Скачать</a></a>
                         </div>
                     </div>
                 </div>

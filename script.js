@@ -16,6 +16,7 @@ function imageUploadHandler(event) {
         return function (e) {
             imageContainer.setAttribute('data-src', e.target.result);
             imageContainer.setAttribute('title', escape(theFile.name));
+            getImagePalette(imageContainer.id);
         };
     })(files[0]);
 
@@ -77,19 +78,86 @@ function inputChange(event) {
 
 }
 
-function renderImage() {
-    // UIkit.modal.dialog('<div id="imageDownloader"></div>', { "sel-close": '.uk-modal-close-outside' });
+function downloadImage() {
+    // Image rendering:
     html2canvas(document.getElementById('imageContainer'), { logging: false }).then(canvas => {
-        // document.getElementById('imageDownloader').innerHTML = "<div id='imageDownloaderImg'></div>"
-        document.getElementById('imageDownloaderImg').innerHTML = "";
-        document.getElementById('imageDownloaderImg').appendChild(canvas);
         canvas.toBlob(function (blob) {
-            // console.log(blob);
-            // imageContainer.setAttribute('data-src', blob);
-            // saveAs(blob, 'image.jpeg');
+            saveAs(blob, 'image.jpeg');
         }, 'image/png')
 
     });
+}
+
+function getImagePalette(imageId) {
+    var blockSize = 5, // only visit every 5 pixels
+        defaultRGB = { r: 0, g: 0, b: 0 }, // for non-supporting envs
+        canvas = document.createElement('canvas'),
+        context = canvas.getContext && canvas.getContext('2d'),
+        data, width, height,
+        i = -4,
+        length,
+        rgb = { r: 0, g: 0, b: 0 },
+        count = 0;
+
+    if (!context) {
+        return defaultRGB;
+    }
+
+    height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
+    width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
+
+    context.drawImage(imgEl, 0, 0);
+
+    try {
+        data = context.getImageData(0, 0, width, height);
+    } catch (e) {
+        UIkit.notification('Ошибка безопаности сервиса', { status: 'danger' });
+        return defaultRGB;
+    }
+
+    length = data.data.length;
+
+    while ((i += blockSize * 4) < length) {
+        ++count;
+        rgb.r += data.data[i];
+        rgb.g += data.data[i + 1];
+        rgb.b += data.data[i + 2];
+    }
+
+    // ~~ used to floor values
+    rgb.r = ~~(rgb.r / count);
+    rgb.g = ~~(rgb.g / count);
+    rgb.b = ~~(rgb.b / count);
+
+    return `rgb(${rgb.r},${rgb.g},${rgb.b})`;
+}
+
+function setTitleBackgroundColour(colour) {
+    document.querySelectorAll('.cpg-image-text-with-bg').forEach(function (elem) {
+        elem.style.background = colour;
+    });
+}
+
+function generateRandomGradient() {
+
+    var hexValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e"];
+
+    function populate(a) {
+        for (var i = 0; i < 6; i++) {
+            var x = Math.round(Math.random() * 14);
+            var y = hexValues[x];
+            a += y;
+        }
+        return a;
+    }
+
+    var newColor1 = populate('#');
+    var newColor2 = populate('#');
+    var angle = Math.round(Math.random() * 360);
+
+    var gradient = "linear-gradient(" + angle + "deg, " + newColor1 + ", " + newColor2 + ")";
+
+    document.getElementById("imageContainer").style.background = gradient;
 }
 
 
@@ -110,13 +178,11 @@ function init() {
 
     document.getElementById('fileUploader').addEventListener('change', imageUploadHandler, false);
 
-    hideElem('gradientOptions');
+    document.getElementById('generateGradient').addEventListener('click', generateRandomGradient, false);
 
-    UIkit.util.on('#downloadModal', 'click', function (e) {
-        e.preventDefault();
-        e.target.blur();
-        renderImage();
-    });
+    document.getElementById('downloadImage').addEventListener('click', downloadImage, false);
+
+    hideElem('gradientOptions');
 
 }
 
