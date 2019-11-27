@@ -57,7 +57,49 @@ function changeCoverMode(event) {
     }
 }
 
+function inputChange(event) {
+    setTimeout(function () {
+        const inputElem = document.getElementById(event.target.id);
+        const targetId = 'image' + event.target.id.substring(event.target.id.indexOf('input') + 5, event.target.id.length);
+        const imageElem = document.getElementById(targetId);
+        if (inputElem.id === "inputLoc") {
+            if (inputElem.value.length > 0) {
+                imageElem.innerHTML = `<i id="locIcon" class="fas fa-map-marker-alt cpg-loc-icon"></i> ${inputElem.value}`
+            }
+            else {
+                document.getElementById('locIcon').parentNode.removeChild(document.getElementById('locIcon'));
+            }
+        }
+        else {
+            imageElem.innerText = inputElem.value;
+        }
+    }, 50)
+
+}
+
+function renderImage() {
+    // UIkit.modal.dialog('<div id="imageDownloader"></div>', { "sel-close": '.uk-modal-close-outside' });
+    html2canvas(document.getElementById('imageContainer'), { logging: false }).then(canvas => {
+        // document.getElementById('imageDownloader').innerHTML = "<div id='imageDownloaderImg'></div>"
+        document.getElementById('imageDownloaderImg').innerHTML = "";
+        document.getElementById('imageDownloaderImg').appendChild(canvas);
+        canvas.toBlob(function (blob) {
+            // console.log(blob);
+            // imageContainer.setAttribute('data-src', blob);
+            // saveAs(blob, 'image.jpeg');
+        }, 'image/png')
+
+    });
+}
+
+
 function init() {
+
+    document.querySelectorAll('[id^=input]').forEach(function () {
+        addEventListener('keydown', inputChange, true);
+        addEventListener('change', inputChange, true);
+    });
+
     document.getElementsByName('sizeselector').forEach(function () {
         addEventListener('change', imageResizer, false);
     });
@@ -69,6 +111,12 @@ function init() {
     document.getElementById('fileUploader').addEventListener('change', imageUploadHandler, false);
 
     hideElem('gradientOptions');
+
+    UIkit.util.on('#downloadModal', 'click', function (e) {
+        e.preventDefault();
+        e.target.blur();
+        renderImage();
+    });
 
 }
 

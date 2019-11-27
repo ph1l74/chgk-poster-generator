@@ -3,9 +3,54 @@
     width: 800px;
     height: 450px;
     border: 1px solid lightgrey;
+    position: relative;
 }
 
-.cpg-hidden {
-    visibility: hidden;
-    opacity: 0;
+.cpg-image-text {
+    font-family: 'Roboto Slab', serif;
+    position: absolute;
+    left: 3rem;
+    color: black;
+    font-size: 2.1rem;
+    color: white;
+    background: black;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+#imageTitle {
+    font-family: 'Open Sans', sans-serif;
+    background: transparent;
+    font-size: 3.6rem;
+    color: white;
+    text-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px;
+    font-weight: 200;
+    width: 550px;
+    line-height: 0.8;
+    text-transform: uppercase;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+}
+
+div#imageDate {
+    top: 3rem;
+}
+
+div#imageTime {
+    top: 6.4rem;
+}
+
+div#imageLoc {
+    bottom: 3.7rem;
+    font-size: 1.5rem;
+}
+
+.cpg-loc-icon {
+    margin: 0px 2px 0px 4px
+}
+
+#imageDownloader {
+    transition: all 1s ease-out;
+    padding: 3rem;
 }
