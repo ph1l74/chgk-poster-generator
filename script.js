@@ -16,7 +16,7 @@ function imageUploadHandler(event) {
         return function (e) {
             imageContainer.setAttribute('data-src', e.target.result);
             imageContainer.setAttribute('title', escape(theFile.name));
-            getImagePalette(imageContainer.id);
+            setActuialTextBackground
         };
     })(files[0]);
 
@@ -91,7 +91,7 @@ function downloadImage() {
 function getImagePalette(imageId) {
     var blockSize = 5, // only visit every 5 pixels
         defaultRGB = { r: 0, g: 0, b: 0 }, // for non-supporting envs
-        canvas = document.createElement('canvas'),
+        canvas = document.createElement('imageCanvas'),
         context = canvas.getContext && canvas.getContext('2d'),
         data, width, height,
         i = -4,
@@ -103,10 +103,10 @@ function getImagePalette(imageId) {
         return defaultRGB;
     }
 
-    height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
-    width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
+    height = canvas.height = imageId.naturalHeight || imageId.offsetHeight || imageId.height;
+    width = canvas.width = imageId.naturalWidth || imageId.offsetWidth || imageId.width;
 
-    context.drawImage(imgEl, 0, 0);
+    context.drawImage(imageId, 0, 0);
 
     try {
         data = context.getImageData(0, 0, width, height);
@@ -129,6 +129,7 @@ function getImagePalette(imageId) {
     rgb.g = ~~(rgb.g / count);
     rgb.b = ~~(rgb.b / count);
 
+    console.log(rgb);
     return `rgb(${rgb.r},${rgb.g},${rgb.b})`;
 }
 
@@ -157,7 +158,14 @@ function generateRandomGradient() {
 
     var gradient = "linear-gradient(" + angle + "deg, " + newColor1 + ", " + newColor2 + ")";
 
+    document.getElementById("imageContainer").setAttribute('data-src', '');
     document.getElementById("imageContainer").style.background = gradient;
+    setActuialTextBackground();
+}
+
+function setActuialTextBackground() {
+    const colour = getImagePalette("imageContainer");
+    setTitleBackgroundColour(colour);
 }
 
 
