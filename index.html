@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:800|Roboto+Slab&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 
-
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro/dist/iro.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
@@ -32,8 +32,8 @@
         </div>
     </div>
     <div class="uk-section cpg-image uk-margin-small">
-        <div uk-grid class="uk-container uk-margin-auto">
-            <div class="uk-width-3-4 uk-margin-auto ">
+        <div uk-grid class="uk-container uk-container-large uk-margin-auto">
+            <div class="uk-width-3-5 uk-margin-auto ">
                 <div id="imageContainer"
                     class="cpg-image-container uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-margin-medium-top"
                     data-src="" uk-img>
@@ -44,47 +44,58 @@
                 </div>
                 <div id="imageCanvas" style="display: none;"></div>
             </div>
-            <div class="uk-width-1-4 uk-margin-auto">
+            <div class="uk-width-2-5 uk-margin-auto">
                 <div class="cpg-controlls uk-margin-small uk-margin-auto uk-align-center">
-                    <div id="widthController" class="uk-margin-small uk-margin-top">
-                        <h4 class="uk-text-center">Высота афиши:</h4>
-                        <div class="uk-form-controls">
-                            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                <label><input class="uk-radio" type="radio" name="sizeselector" value=450 checked>
-                                    450px</label>
-                                <label><input class="uk-radio" type="radio" name="sizeselector" value=500> 500px</label>
-                                <label><input class="uk-radio" type="radio" name="sizeselector" value=600> 600px</label>
+                    <div class="uk-child-width-1-2">
+                        <div id="widthController" class="uk-margin-small uk-margin-top">
+                            <h4 class="uk-text-center">Высота афиши:</h4>
+                            <div class="uk-form-controls">
+                                <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                                    <label><input class="uk-radio" type="radio" name="sizeselector" value=450 checked>
+                                        450px</label>
+                                    <label><input class="uk-radio" type="radio" name="sizeselector" value=500>
+                                        500px</label>
+                                    <label><input class="uk-radio" type="radio" name="sizeselector" value=600>
+                                        600px</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="textControlls" class="uk-margin-small">
+                            <h4 class="uk-text-center uk-margin-small">Заголовок:</h4>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="inputTitle" type="text" placeholder="ОВСЧ 3 Тур">
+                            </div>
+                            <h4 class="uk-text-center uk-margin-small">Дата:</h4>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="inputDate" type="text" placeholder="25.12.2019">
+                            </div>
+                            <h4 class="uk-text-center uk-margin-small">Время:</h4>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="inputTime" type="text" placeholder="19:00">
+                            </div>
+                            <h4 class="uk-text-center uk-margin-small">Место проведения:</h4>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="inputLoc" type="text" placeholder="ОВСЧ 3 Тур">
                             </div>
                         </div>
                     </div>
-                    <div id="textControlls" class="uk-margin-small">
-                        <h4 class="uk-text-center uk-margin-small">Заголовок:</h4>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="inputTitle" type="text" placeholder="ОВСЧ 3 Тур">
-                        </div>
-                        <h4 class="uk-text-center uk-margin-small">Дата:</h4>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="inputDate" type="text" placeholder="25.12.2019">
-                        </div>
-                        <h4 class="uk-text-center uk-margin-small">Время:</h4>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="inputTime" type="text" placeholder="19:00">
-                        </div>
-                        <h4 class="uk-text-center uk-margin-small">Место проведения:</h4>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="inputLoc" type="text" placeholder="ОВСЧ 3 Тур">
-                        </div>
-                        <h4 class="uk-text-center uk-margin-small">Изображение подложки:</h4>
-                        <div class="uk-form-controls">
-                            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                <label><input class="uk-radio" type="radio" name="covermode" value="gradient">
-                                    Градиент</label>
-                                <label><input class="uk-radio" type="radio" name="covermode" value="image" checked>
-                                    Изображение </label>
+                    <div class="uk-child-width-1-2">
+                        <div id="imageControlls" class="uk-margin-small">
+                            <h4 class="uk-text-center uk-margin-small">Цвет фона текста:</h4>
+                            <div class="uk-width-1-1">
+                                <div id="colorPickerContainer"></div>
                             </div>
-                        </div>
-                        <div id="gradientOptions">
-                            <!-- <div uk-grid class="uk-margin-bottom">
+                            <h4 class="uk-text-center uk-margin-small">Изображение подложки:</h4>
+                            <div class="uk-form-controls">
+                                <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                                    <label><input class="uk-radio" type="radio" name="covermode" value="gradient">
+                                        Градиент</label>
+                                    <label><input class="uk-radio" type="radio" name="covermode" value="image" checked>
+                                        Изображение </label>
+                                </div>
+                            </div>
+                            <div id="gradientOptions">
+                                <!-- <div uk-grid class="uk-margin-bottom">
                                 <div class="uk-width-1-2@s uk-margin-remove">
                                     <input class="uk-input" type="text" placeholder="50" maxlength="число">
                                 </div>
@@ -92,19 +103,21 @@
                                     <input class="uk-input" type="text" placeholder="50" maxlength="число">
                                 </div>
                             </div> -->
-                            <button id="generateGradient" class="uk-button uk-button-default uk-width-1-1">Случайный</button>
-                        </div>
-                        <div id="uploadOptions" class="uk-margin-top" uk-grid>
-                            <div uk-form-custom class="uk-width-1-1">
-                                <input id="fileUploader" type="file">
-                                <button class="uk-button uk-button-default uk-width-1-1" type="button"
-                                    tabindex="-1">Выберите файл</button>
+                                <button id="generateGradient"
+                                    class="uk-button uk-button-default uk-width-1-1">Случайный</button>
                             </div>
-                        </div>
+                            <div id="uploadOptions" class="uk-margin-top" uk-grid>
+                                <div uk-form-custom class="uk-width-1-1">
+                                    <input id="fileUploader" type="file">
+                                    <button class="uk-button uk-button-default uk-width-1-1" type="button"
+                                        tabindex="-1">Выберите файл</button>
+                                </div>
+                            </div>
 
-                        <div id="downloadOptions" class="uk-margin-top">
-                            <a id="downloadImage" class="uk-button uk-button-primary uk-width-1-1"><i
-                                    class="fas fa-cloud-download-alt"></i> Скачать</a></a>
+                            <div id="downloadOptions" class="uk-margin-top">
+                                <a id="downloadImage" class="uk-button uk-button-primary uk-width-1-1"><i
+                                        class="fas fa-cloud-download-alt"></i> Скачать</a></a>
+                            </div>
                         </div>
                     </div>
                 </div>

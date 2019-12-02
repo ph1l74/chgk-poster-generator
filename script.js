@@ -88,50 +88,6 @@ function downloadImage() {
     });
 }
 
-function getImagePalette(imageId) {
-    var blockSize = 5, // only visit every 5 pixels
-        defaultRGB = { r: 0, g: 0, b: 0 }, // for non-supporting envs
-        canvas = document.createElement('imageCanvas'),
-        context = canvas.getContext && canvas.getContext('2d'),
-        data, width, height,
-        i = -4,
-        length,
-        rgb = { r: 0, g: 0, b: 0 },
-        count = 0;
-
-    if (!context) {
-        return defaultRGB;
-    }
-
-    height = canvas.height = imageId.naturalHeight || imageId.offsetHeight || imageId.height;
-    width = canvas.width = imageId.naturalWidth || imageId.offsetWidth || imageId.width;
-
-    context.drawImage(imageId, 0, 0);
-
-    try {
-        data = context.getImageData(0, 0, width, height);
-    } catch (e) {
-        UIkit.notification('Ошибка безопаности сервиса', { status: 'danger' });
-        return defaultRGB;
-    }
-
-    length = data.data.length;
-
-    while ((i += blockSize * 4) < length) {
-        ++count;
-        rgb.r += data.data[i];
-        rgb.g += data.data[i + 1];
-        rgb.b += data.data[i + 2];
-    }
-
-    // ~~ used to floor values
-    rgb.r = ~~(rgb.r / count);
-    rgb.g = ~~(rgb.g / count);
-    rgb.b = ~~(rgb.b / count);
-
-    console.log(rgb);
-    return `rgb(${rgb.r},${rgb.g},${rgb.b})`;
-}
 
 function setTitleBackgroundColour(colour) {
     document.querySelectorAll('.cpg-image-text-with-bg').forEach(function (elem) {
@@ -160,13 +116,22 @@ function generateRandomGradient() {
 
     document.getElementById("imageContainer").setAttribute('data-src', '');
     document.getElementById("imageContainer").style.background = gradient;
-    setActuialTextBackground();
 }
 
-function setActuialTextBackground() {
-    const colour = getImagePalette("imageContainer");
-    setTitleBackgroundColour(colour);
+
+function colorpickerInit() {
+    var colorPicker = new iro.ColorPicker("#colorPickerContainer", {
+        width: 260,
+        color: "#1e87f0",
+        borderWidth: 1,
+        borderColor: "#fff",
+    });
+    colorPicker.on(["color:init", "color:change"], function (color) {
+        setTitleBackgroundColour(color.rgbString);
+    });
 }
+
+
 
 
 function init() {
@@ -189,6 +154,8 @@ function init() {
     document.getElementById('generateGradient').addEventListener('click', generateRandomGradient, false);
 
     document.getElementById('downloadImage').addEventListener('click', downloadImage, false);
+
+    colorpickerInit();
 
     hideElem('gradientOptions');
 
