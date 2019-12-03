@@ -123,10 +123,14 @@ function generateRandomGradient() {
 
 function colorpickerInit() {
     var colorPicker = new iro.ColorPicker("#colorPickerContainer", {
-        width: 180,
+        width: 120,
         color: "#1e87f0",
         borderWidth: 1,
         borderColor: "#fff",
+        padding: 2,
+        sliderMargin: 4,
+        handleRadius: 10,
+
     });
     colorPicker.on(["color:init", "color:change"], function (color) {
         setTitleBackgroundColour(color.rgbString);
