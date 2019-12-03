@@ -4,6 +4,7 @@
     height: 450px;
     border: 1px solid lightgrey;
     position: relative;
+    margin: auto;
 }
 
 .cpg-image-text {
@@ -53,4 +54,8 @@ div#imageLoc {
 #imageDownloader {
     transition: all 1s ease-out;
     padding: 3rem;
+}
+
+.iro__colorPicker {
+    margin: auto;
 }

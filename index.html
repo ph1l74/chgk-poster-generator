@@ -31,35 +31,12 @@
             </div>
         </div>
     </div>
-    <div class="uk-section cpg-image uk-margin-small">
+    <div class="uk-section cpg-image uk-margin-small uk-padding-small">
+
         <div uk-grid class="uk-container uk-container-large uk-margin-auto">
-            <div class="uk-width-3-5 uk-margin-auto ">
-                <div id="imageContainer"
-                    class="cpg-image-container uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-margin-medium-top"
-                    data-src="" uk-img>
-                    <div id="imageDate" class="cpg-image-text cpg-image-text-with-bg"></div>
-                    <div id="imageTime" class="cpg-image-text cpg-image-text-with-bg"></div>
-                    <div id="imageTitle" class="cpg-image-text"></div>
-                    <div id="imageLoc" class="cpg-image-text cpg-image-text-with-bg"></div>
-                </div>
-                <div id="imageCanvas" style="display: none;"></div>
-            </div>
-            <div class="uk-width-2-5 uk-margin-auto">
+            <div class="uk-width-2-3 uk-margin-auto">
                 <div class="cpg-controlls uk-margin-small uk-margin-auto uk-align-center">
-                    <div class="uk-child-width-1-2">
-                        <div id="widthController" class="uk-margin-small uk-margin-top">
-                            <h4 class="uk-text-center">Высота афиши:</h4>
-                            <div class="uk-form-controls">
-                                <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                    <label><input class="uk-radio" type="radio" name="sizeselector" value=450 checked>
-                                        450px</label>
-                                    <label><input class="uk-radio" type="radio" name="sizeselector" value=500>
-                                        500px</label>
-                                    <label><input class="uk-radio" type="radio" name="sizeselector" value=600>
-                                        600px</label>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="uk-child-width-1-3" uk-grid>
                         <div id="textControlls" class="uk-margin-small">
                             <h4 class="uk-text-center uk-margin-small">Заголовок:</h4>
                             <div class="uk-form-controls">
@@ -75,34 +52,41 @@
                             </div>
                             <h4 class="uk-text-center uk-margin-small">Место проведения:</h4>
                             <div class="uk-form-controls">
-                                <input class="uk-input" id="inputLoc" type="text" placeholder="ОВСЧ 3 Тур">
+                                <input class="uk-input" id="inputLoc" type="text" placeholder="УрФУ ИМКН, ауд. 351">
                             </div>
                         </div>
-                    </div>
-                    <div class="uk-child-width-1-2">
-                        <div id="imageControlls" class="uk-margin-small">
-                            <h4 class="uk-text-center uk-margin-small">Цвет фона текста:</h4>
-                            <div class="uk-width-1-1">
-                                <div id="colorPickerContainer"></div>
+                        <div id="column2">
+                            <div id="widthController" class="uk-margin-small">
+                                <h4 class="uk-text-center">Высота афиши:</h4>
+                                <div class="uk-form-controls">
+                                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid uk-align-center">
+                                        <label><input class="uk-radio" type="radio" name="sizeselector" value=450
+                                                checked>
+                                            450px</label>
+                                        <label><input class="uk-radio" type="radio" name="sizeselector" value=500>
+                                            500px</label>
+                                        <label><input class="uk-radio" type="radio" name="sizeselector" value=600>
+                                            600px</label>
+                                    </div>
+                                </div>
                             </div>
+                            <div id="colorPicker" class="uk-margin-small uk-child-width-1-1">
+                                <h4 class="uk-text-center uk-margin-small">Цвет фона текста:</h4>
+                                <div id="colorPickerContainer" class="uk-align-center uk-margin-auto"></div>
+                            </div>
+                        </div>
+
+                        <div id="imageControlls" class="uk-margin-small">
                             <h4 class="uk-text-center uk-margin-small">Изображение подложки:</h4>
                             <div class="uk-form-controls">
-                                <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                    <label><input class="uk-radio" type="radio" name="covermode" value="gradient">
+                                <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid uk-align-center">
+                                    <label><input class="uk-radio covermode" type="radio" name="covermode" value="gradient">
                                         Градиент</label>
-                                    <label><input class="uk-radio" type="radio" name="covermode" value="image" checked>
+                                    <label><input class="uk-radio covermode" type="radio" name="covermode" value="image" checked>
                                         Изображение </label>
                                 </div>
                             </div>
                             <div id="gradientOptions">
-                                <!-- <div uk-grid class="uk-margin-bottom">
-                                <div class="uk-width-1-2@s uk-margin-remove">
-                                    <input class="uk-input" type="text" placeholder="50" maxlength="число">
-                                </div>
-                                <div class="uk-width-1-2@s uk-margin-remove">
-                                    <input class="uk-input" type="text" placeholder="50" maxlength="число">
-                                </div>
-                            </div> -->
                                 <button id="generateGradient"
                                     class="uk-button uk-button-default uk-width-1-1">Случайный</button>
                             </div>
@@ -113,7 +97,6 @@
                                         tabindex="-1">Выберите файл</button>
                                 </div>
                             </div>
-
                             <div id="downloadOptions" class="uk-margin-top">
                                 <a id="downloadImage" class="uk-button uk-button-primary uk-width-1-1"><i
                                         class="fas fa-cloud-download-alt"></i> Скачать</a></a>
@@ -123,9 +106,27 @@
                 </div>
             </div>
         </div>
-        <script>
-            init();
-        </script>
+    </div>
+
+    <div class="uk-section cpg-image uk-margin-small uk-padding-small uk-margin-large-bottom">
+        <div uk-grid class="uk-container uk-container-large uk-margin-auto">
+            <div class="uk-width-1-1 uk-margin-auto ">
+
+                <div id="imageContainer"
+                    class="cpg-image-container uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-margin-medium-top"
+                    data-src="" uk-img>
+                    <div id="imageDate" class="cpg-image-text cpg-image-text-with-bg"></div>
+                    <div id="imageTime" class="cpg-image-text cpg-image-text-with-bg"></div>
+                    <div id="imageTitle" class="cpg-image-text"></div>
+                    <div id="imageLoc" class="cpg-image-text cpg-image-text-with-bg"></div>
+                </div>
+                <div id="imageCanvas" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        init();
+    </script>
 </body>
 
 </html>

@@ -121,7 +121,7 @@ function generateRandomGradient() {
 
 function colorpickerInit() {
     var colorPicker = new iro.ColorPicker("#colorPickerContainer", {
-        width: 260,
+        width: 180,
         color: "#1e87f0",
         borderWidth: 1,
         borderColor: "#fff",
@@ -136,17 +136,17 @@ function colorpickerInit() {
 
 function init() {
 
-    document.querySelectorAll('[id^=input]').forEach(function () {
-        addEventListener('keydown', inputChange, true);
-        addEventListener('change', inputChange, true);
+    document.querySelectorAll('[id^=input]').forEach(function (el) {
+        el.addEventListener('keydown', inputChange, true);
+        el.addEventListener('change', inputChange, true);
     });
 
-    document.getElementsByName('sizeselector').forEach(function () {
-        addEventListener('change', imageResizer, false);
+    document.getElementsByName('sizeselector').forEach(function (el) {
+        el.addEventListener('change', imageResizer, false);
     });
 
-    document.getElementsByName('covermode').forEach(function () {
-        addEventListener('change', changeCoverMode, false);
+    document.querySelectorAll('.covermode').forEach(function (el) {
+        el.addEventListener('change', changeCoverMode, false);
     });
 
     document.getElementById('fileUploader').addEventListener('change', imageUploadHandler, false);
