@@ -16,7 +16,6 @@ function imageUploadHandler(event) {
         return function (e) {
             imageContainer.setAttribute('data-src', e.target.result);
             imageContainer.setAttribute('title', escape(theFile.name));
-            setActuialTextBackground
         };
     })(files[0]);
 
@@ -68,7 +67,10 @@ function inputChange(event) {
                 imageElem.innerHTML = `<i id="locIcon" class="fas fa-map-marker-alt cpg-loc-icon"></i> ${inputElem.value}`
             }
             else {
-                document.getElementById('locIcon').parentNode.removeChild(document.getElementById('locIcon'));
+                if (document.getElementById('locIcon')) {
+                    document.getElementById('locIcon').parentNode.removeChild(document.getElementById('locIcon'));
+                }
+                imageElem.innerHTML = `${inputElem.value}`;
             }
         }
         else {
