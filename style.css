@@ -58,3 +58,44 @@ div#imageLoc {
 .iro__colorPicker {
     margin: auto;
 }
+
+#downloadImage {
+    transition: all .2s ease;
+    background: rgba(0, 0, 0, 0);
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 20px;
+    width: 800px;
+    height: 450px;
+    align-content: center;
+    text-align: center;
+    line-height: 420px;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.cpg-image-container-border:hover #downloadImage, .cpg-image-container:hover #downloadImage {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    visibility: visible;
+    opacity: 1;
+}
+
+.cpg-download-text {
+    margin: auto;
+}
+
+.cpg-image-container-border {
+    padding: 20px;
+    border: solid 1px;
+    border-color: rgba(0, 0, 0, 0.3);
+    width: 800px;
+    margin: auto;
+    position: relative;
+}
+
+.cpg-image-container-border:hover {
+    border-color: #1e87f0;
+    cursor: pointer;
+}

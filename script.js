@@ -23,7 +23,11 @@ function imageUploadHandler(event) {
 }
 
 function imageResizer(event) {
-    document.getElementById('imageContainer').style.height = `${event.target.value}px`
+    let newHeight = event.target.value;
+    document.getElementById('imageContainer').style.height = `${newHeight}px`
+    document.getElementById('downloadImage').style.height = `${newHeight}px`
+    // document.querySelector('.cpg-image-container-border').style.width = `${newHeight+40}px`
+    
 }
 
 function displayNone(elem) {

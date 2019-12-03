@@ -97,11 +97,11 @@
                                             type="button" tabindex="-1">Выберите файл</button>
                                     </div>
                                 </div>
-                                <div id="downloadOptions" class="uk-margin-top uk-hidden">
+                                <!-- <div id="downloadOptions" class="uk-margin-top uk-hidden">
                                     <a id="downloadImage"
                                         class="uk-button uk-button-primary uk-button-small uk-width-1-1"><i
-                                            class="fas fa-cloud-download-alt"></i> Скачать</a></a>
-                                </div>
+                                            class="fas fa-cloud-download-alt"></i> Скачать</a>
+                                </div> -->
                             </div>
                         </div>
                         <div id="colorPicker" class="uk-margin-small uk-child-width-1-1">
@@ -115,16 +115,23 @@
     </div>
 
     <div class="uk-section cpg-image uk-margin-small uk-padding-small uk-margin-large-bottom">
-        <div uk-grid class="uk-container uk-container-large uk-margin-auto">
-            <div class="uk-width-1-1 uk-margin-auto ">
-
-                <div id="imageContainer"
-                    class="cpg-image-container uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-margin-medium-top"
-                    data-src="" uk-img>
-                    <div id="imageDate" class="cpg-image-text cpg-image-text-with-bg"></div>
-                    <div id="imageTime" class="cpg-image-text cpg-image-text-with-bg"></div>
-                    <div id="imageTitle" class="cpg-image-text"></div>
-                    <div id="imageLoc" class="cpg-image-text cpg-image-text-with-bg"></div>
+        <div uk-grid class="uk-container uk-container uk-margin-auto">
+            <div class="uk-width-1-1 uk-margin-auto">
+                <div class="cpg-image-container-border">
+                    <!-- class="cpg-image-container uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" -->
+                    <div id="imageContainer"
+                        class="cpg-image-container uk-background-cover uk-flex uk-flex-center uk-flex-middle uk-light"
+                        data-src="" uk-img>
+                        <div id="imageDate" class="cpg-image-text cpg-image-text-with-bg"></div>
+                        <div id="imageTime" class="cpg-image-text cpg-image-text-with-bg"></div>
+                        <div id="imageTitle" class="cpg-image-text"></div>
+                        <div id="imageLoc" class="cpg-image-text cpg-image-text-with-bg"></div>
+                    </div>
+                    <div id="downloadImage">
+                        <div class="cpg-download-text">
+                            <i class="fas fa-cloud-download-alt"></i> Скачать</a></a>
+                        </div>
+                    </div>
                 </div>
                 <div id="imageCanvas" style="display: none;"></div>
             </div>
